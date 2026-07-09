@@ -107,6 +107,17 @@ Every flagship story auto-generates subtasks in lanes:
 - **[BE]** — database changes, API/RPC development, business logic, workflow implementation, external integrations, notification service wiring, audit logging, RBAC, background jobs, unit tests.
 - **[QA/Sec]** — **auto-generated whenever the story touches tenancy, auth, migrations, or storage rules**: cross-tenant RLS isolation tests and a Layla + Faris review before merge (standing rule, `docs/team.md`). This lane is not optional for those stories.
 
+### 3.8 Pre-assignment review gate (Reem + Rashid)
+
+No flagship story is assigned to engineers as-drafted. After Omar drafts it:
+
+1. **Reem - design direction** (any story with a UI surface): design-system components to reuse or extend, UX flow and states guidance, motion + RTL notes, Figma references. Recorded in the story as a **Design Direction** section.
+2. **Rashid - tech input**: architecture fit, which existing services/APIs/tables to extend (reuse before build), data-model and integration notes, feasibility risks, anything needing an ADR. Recorded as a **Tech Notes** section.
+3. Their input goes back to **Omar**, who updates the story and subtasks - Omar stays the single editor so format and voice stay consistent.
+4. Only after both sections are recorded is the story assigned.
+
+Compact stories are reviewed in batch per epic; either reviewer can escalate one to flagship.
+
 ## 4. Compact story format
 
 One to three lines inside the epic:
@@ -129,3 +140,4 @@ Rules: FR trace required; ACs are observable outcomes with measurable targets; n
 7. Forms always get a structured field table; grids always get a column table (§3.4). Data contract only — layout is Reem's.
 8. Every flagship story gets Out of Scope and auto-generated [FE]/[BE] subtasks, plus [QA/Sec] when triggered.
 9. Keep the traceability header current — FR-x, Phase 3 tables/endpoints, priority, size.
+10. Route every flagship draft through the Reem + Rashid gate (SS3.8) and fold their input in before assignment.

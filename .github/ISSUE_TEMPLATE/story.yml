@@ -98,6 +98,20 @@ body:
     validations:
       required: true
   - type: textarea
+    id: design-direction
+    attributes:
+      label: Design Direction (Reem)
+      description: "Filled at the pre-assignment review gate: design-system components to reuse/extend, UX flow + states, motion/RTL notes, Figma refs."
+    validations:
+      required: false
+  - type: textarea
+    id: tech-notes
+    attributes:
+      label: Tech Notes (Rashid)
+      description: "Filled at the pre-assignment review gate: architecture fit, services/APIs to extend, data-model + integration notes, risks."
+    validations:
+      required: false
+  - type: textarea
     id: assumptions
     attributes:
       label: Assumptions

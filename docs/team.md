@@ -30,6 +30,7 @@ The product organization from the brief, named. Two tiers: the **delivery org** 
 Today, **Bilal / Yousef / Tariq / Dana / Omar / Huda / Khalid are hats worn by the single orchestrator loop (Marwan)** — they are not separately-spawned agents, so their "review" of each other is not independent. Only Layla, Faris, Rashid, and Nadia run as genuinely independent subagents. To make the delivery org independent too, spawn dedicated agents (`ecc:planner` → Omar, `ecc:tdd-guide` → Dana, `ecc:architect` → Rashid, language reviewers, etc.). Recommended for higher-stakes work (payments, PDPL).
 
 ## Standing rules
+- Pre-assignment: every flagship story gets **Reem** (design direction) + **Rashid** (tech input) BEFORE engineers see it; notes return to **Omar**, the single editor, who updates the story then assigns (story-format.md SS3.8).
 - Every migration/RLS/auth PR gets **Layla** (code) + **Faris** (security) before merge; read-only feature PRs get Layla only.
 - Findings are fixed and re-verified before merge; both verdicts recorded as a PR comment.
 - Solo-founder mode: a Layla/Faris pass substitutes for the human-reviewer minimum until a second person joins.
