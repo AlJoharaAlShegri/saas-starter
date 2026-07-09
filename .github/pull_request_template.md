@@ -8,7 +8,7 @@
 - [ ] Before / after included
 - [ ] States covered: empty / loading / error
 - [ ] **RTL (Arabic) screenshot included**
-- [ ] Both themes if affected (Chalk / Night)
+- [ ] Both themes if affected (light / dark)
 
 ## Testing & Impact
 - [ ] Unit tests added/updated

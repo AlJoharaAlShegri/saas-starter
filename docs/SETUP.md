@@ -21,6 +21,8 @@ Search the repo for `{{` and replace:
 | `{{GITHUB_OWNER}}` | docs/dev-guidelines.md | GitHub account/org |
 | `{{ONE_PARAGRAPH_PRODUCT_DESCRIPTION}}` | CLAUDE.md | What you're building |
 | `{{SUPABASE_PROJECT_REF}}` / `{{SUPABASE_REGION}}` | CLAUDE.md | From step 4 |
+| `{{STACK_SUMMARY}}` / `{{COMMANDS}}` | CLAUDE.md | Stack + dev/build/test commands (step 5) |
+| `{{ENV_PREFIX}}` | .env.example | Client env prefix (VITE_, NEXT_PUBLIC_, ...) |
 
 ## 3. GitHub settings (labels, milestones, ruleset, uat branch)
 
@@ -33,14 +35,14 @@ Creates the `team/*` + `priority/*` labels from `.github/labels.json`, milestone
 ## 4. Supabase
 
 1. Create a new project at supabase.com (pick region; Frankfurt for KSA-adjacent latency).
-2. Copy `.env.example` → `.env.local`; fill `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_SUPABASE_PUBLISHABLE_KEY`.
-3. `SUPABASE_SERVICE_ROLE_KEY` stays server-side only (RLS test suite) — NEVER with a `VITE_` prefix, never committed.
+2. Copy `.env.example` → `.env.local`; fill the Supabase URL and keys. Client-exposed vars carry your framework prefix ({{ENV_PREFIX}}: VITE_, NEXT_PUBLIC_, EXPO_PUBLIC_, ...).
+3. `SUPABASE_SERVICE_ROLE_KEY` stays server-side only (RLS test suite) — NEVER with a client-exposed prefix, never committed.
 4. Update the project ref + region in CLAUDE.md.
 5. Migration 0001 should ship the tenancy tables + RLS helper + the cross-tenant isolation test harness before any feature tables (hard rule).
 
-## 5. App scaffold
+## 5. App scaffold (per-project stack)
 
-The template ships no `app/` — scaffold Vite + React 19 + TS + Tailwind v4 as `app/` in the pnpm workspace, or copy a prior project's E0 scaffold. CI (`.github/workflows/ci.yml`) expects `pnpm --filter app` targets: lint, `tsc -b`, test, build.
+The template ships no `app/` — pick the FE/BE stack per project and scaffold it as `app/`. The shipped `ci.yml`, `package.json`, `pnpm-workspace.yaml`, and the language-specific sections of `code-style.md` are TS/React/pnpm DEFAULTS: keep them if the stack matches, otherwise replace the Quality + Dependency-audit steps and Semgrep rulesets for your languages. If CI job names change, update the required status checks in `.github/rulesets/protect-uat-and-main.json` before importing it.
 
 ## 6. First backlog
 

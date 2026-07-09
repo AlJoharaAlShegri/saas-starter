@@ -36,13 +36,13 @@ refactor(theme): extract coach-accent derivation
 test(rls): cross-tenant isolation for checkins table
 ```
 
-Scopes mirror epics/folders: `auth`, `spaces`, `invites`, `roster`, `programs`, `checkins`, `community`, `dashboard`, `packages`, `notifications`, `theme`, `ci`, `repo`, `rls`.
+Scopes mirror epics/folders, defined per project (always: `ci`, `repo`; examples: `auth`, `rls`, `theme`).
 
 ## 4. Pull requests
 
 - Base branch: **`uat`** (only release PRs and hotfixes target `main`).
 - Title: `[E5-S2] Short meaningful description`.
-- Fill the PR template (auto-inserted). UI PRs MUST include before/after screenshots covering empty/loading/error states **and RTL**, plus both themes (Chalk/Night) when affected.
+- Fill the PR template (auto-inserted). UI PRs MUST include before/after screenshots covering empty/loading/error states **and RTL**, plus both themes (light/dark) when affected.
 - Minimum approval: 1 review. Solo-founder mode: a `/code-review` pass (Claude) + self-review substitutes until a second human joins. Security-sensitive changes (`supabase/migrations`, RLS policies, auth, storage rules) additionally get a security-review pass — no exceptions.
 - Address review with follow-up commits; no force-push after review starts.
 - Merge strategy: **Squash & merge** only.
@@ -51,10 +51,10 @@ Scopes mirror epics/folders: `auth`, `spaces`, `invites`, `roster`, `programs`, 
 
 | Job | Tool | Blocking |
 |---|---|---|
-| Quality | lint · `tsc -b` · vitest · build | yes |
-| **SAST** | Semgrep (`p/ci`, `p/typescript`, `p/react`, `p/secrets`) | yes |
+| Quality | lint · typecheck · unit tests · build | yes |
+| **SAST** | Semgrep (`p/ci`, `p/secrets` + per-language rulesets) | yes |
 | Secret scan | Gitleaks (full history) | yes |
-| Dependency audit | `pnpm audit --prod` (fail on high+) | yes |
+| Dependency audit | per package manager (fail on high+) | yes |
 | Dependency updates | Dependabot (weekly, grouped minor/patch) | PRs |
 
 Planned additions as the codebase grows: RLS isolation test suite (blocking, per Phase 5 §4), RTL snapshot tests, Lighthouse CI on staging.

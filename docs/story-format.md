@@ -105,7 +105,7 @@ Every flagship story auto-generates subtasks in lanes:
 
 - **[FE]** — page/modal/form/table build, client-side validation, API integration, loading/error/empty states, success notifications, responsive + RTL, unit tests.
 - **[BE]** — database changes, API/RPC development, business logic, workflow implementation, external integrations, notification service wiring, audit logging, RBAC, background jobs, unit tests.
-- **[QA/Sec]** — **auto-generated whenever the story touches tenancy, auth, migrations, or storage rules**: cross-tenant RLS isolation tests (`app/src/test/rls-isolation.test.ts`) and a Layla + Faris review before merge (standing rule, `docs/team.md`). This lane is not optional for those stories.
+- **[QA/Sec]** — **auto-generated whenever the story touches tenancy, auth, migrations, or storage rules**: cross-tenant RLS isolation tests and a Layla + Faris review before merge (standing rule, `docs/team.md`). This lane is not optional for those stories.
 
 ## 4. Compact story format
 

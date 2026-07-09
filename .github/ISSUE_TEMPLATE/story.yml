@@ -93,7 +93,7 @@ body:
         - [ ]
 
         **[QA/Sec]** (mandatory for tenancy/auth/migration/storage stories)
-        - [ ] Cross-tenant RLS isolation tests (`app/src/test/rls-isolation.test.ts`)
+        - [ ] Cross-tenant RLS isolation tests
         - [ ] Layla (code) + Faris (security) review before merge
     validations:
       required: true

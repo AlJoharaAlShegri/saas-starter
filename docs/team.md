@@ -12,7 +12,7 @@ The product organization from the brief, named. Two tiers: the **delivery org** 
 | Solution Architect | **Rashid** | Architecture, DB/RLS/API design (Phase 3). Also runs as the architecture-review agent |
 | UX/UI Designer | **Reem** | project design system, IA, UX flows |
 | Backend Lead | **Bilal** | Migrations, RLS policies, RPCs, data layer |
-| Frontend Lead | **Yousef** | React/Vite screens, theming boundary, i18n/RTL |
+| Frontend Lead | **Yousef** | Frontend screens, theming boundary, i18n/RTL |
 | DevOps | **Tariq** | CI pipeline (SAST/secrets/audit), branch protection, deploy |
 | QA Lead | **Dana** | Test strategy, the RLS attack suite + schedule/unit tests |
 | Orchestrator / integrator | **Marwan** | Runs the loop: branches, wires, CI + merge chains, keeps the backlog honest |

@@ -1,3 +1,6 @@
+# Quality + Dependency-audit jobs assume pnpm + TypeScript (the default stack) - swap those steps per project.
+# Semgrep configs are TS/React - adjust per language. Keep SAST / secret scan / audit blocking.
+# If job names change, update required checks in .github/rulesets/protect-uat-and-main.json.
 name: CI
 
 on:

@@ -1,6 +1,6 @@
 # {{PROJECT_NAME}} — Code Style
 
-Condensed from Clean Code (Robert C. Martin), adapted for TypeScript/React and this codebase. Reviewers (human and agent) cite this doc by section. It complements [dev-guidelines.md](dev-guidelines.md).
+Condensed from Clean Code (Robert C. Martin), adapted for this codebase; language-specific sections assume the default TS/React stack and are swapped per project. Reviewers (human and agent) cite this doc by section. It complements [dev-guidelines.md](dev-guidelines.md).
 
 ## Naming
 - Classes/components/types: nouns with single responsibility. No generic suffixes (*Manager, *Processor, *Utility, MyFunctions).
