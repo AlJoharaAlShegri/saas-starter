@@ -1,0 +1,49 @@
+name: Epic
+description: "New epic — format: docs/story-format.md §2"
+title: "[Epic] E? — <name>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Format spec: `docs/story-format.md` §2.
+        After creating: apply `epic/*` + `priority/*` labels, assign the milestone (M1–M3),
+        and add this epic to the dependency map in `docs/phase-4-backlog.md`.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: One paragraph — what this epic delivers.
+    validations:
+      required: true
+  - type: textarea
+    id: current-situation
+    attributes:
+      label: Current Situation
+      description: "How the process works today: current workflow, manual activities, pain points, operational limitations, missing automation."
+    validations:
+      required: true
+  - type: textarea
+    id: future-situation
+    attributes:
+      label: Future Situation
+      description: "How it works after implementation: automated workflow, business improvements, integrations, operational efficiencies, expected business outcome."
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies & milestone
+      description: Which epics must land first, and which milestone (M1–M3) this maps to.
+    validations:
+      required: true
+  - type: textarea
+    id: technical-tasks
+    attributes:
+      label: Technical tasks / DoD
+      description: Epic-level work that isn't a user story. Technical epics must include a DoD (one observable end-to-end proof).
+      value: |
+        - [ ] T?.1 —
+
+        **DoD (technical epics):**
+    validations:
+      required: false

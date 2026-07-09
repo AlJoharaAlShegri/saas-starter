@@ -1,0 +1,3 @@
+# False positive: code comment "Deps limited to token: brand/..." matched generic-api-key.
+# Verified human-reviewed - a JSDoc-style comment about useEffect deps, no secret material.
+a6918c95b312bce0590d8ea4328e674c4389c4b2:app/src/features/join/JoinPage.tsx:generic-api-key:65

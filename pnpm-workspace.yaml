@@ -1,0 +1,8 @@
+packages:
+  - app
+  - worker
+
+# Supply-chain hardening (Semgrep p/ci findings)
+minimumReleaseAge: 10080 # wait 7 days before adopting newly published versions
+trustPolicy: no-downgrade
+blockExoticSubdeps: true

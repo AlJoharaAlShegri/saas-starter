@@ -1,0 +1,107 @@
+name: Story (flagship)
+description: "Flagship story — full format: docs/story-format.md §3. Routine CRUD stays compact inside the epic (§4) — check the escalation triggers first."
+title: "[E?-S?] <short meaningful description>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Flagship stories only** — integration, status machine, permission/tenancy boundary,
+        migration/auth, money/PDPL data, or novel UX (`docs/story-format.md` §1).
+        Routine CRUD gets a compact one-liner in the epic instead — don't gold-plate.
+        After creating: apply `team/*` + `epic/*` + `priority/*` labels and the milestone.
+  - type: input
+    id: traces
+    attributes:
+      label: Traces
+      description: "FR-x · Phase 3 tables/endpoints · Priority · Size (FE/BE leads)"
+      placeholder: "FR-1.2 · tables: spaces, invites · P0 · Size: M"
+    validations:
+      required: true
+  - type: textarea
+    id: full-story
+    attributes:
+      label: Full Story — the WHY
+      description: "User story + short narrative: business objective, actors, end-to-end workflow, business rules. Context only — do NOT enumerate system behaviors here; Scenarios are the single source of truth for behavior."
+      value: |
+        As a <actor>, I want <capability>, so that <business objective>.
+
+        **Actors:**
+        **Workflow:**
+        **Business rules:**
+    validations:
+      required: true
+  - type: textarea
+    id: scenarios
+    attributes:
+      label: Scenarios — the normative WHAT
+      description: "Given/When/Then, derived from the coverage matrix (actors × status transitions × integration outcomes × validation failures). Tag invented behavior [ASSUMPTION]."
+      value: |
+        **Scenario 1 — <happy path>**
+        - **Given** …
+        - **When** …
+        - **Then** …
+
+        **Scenario 2 — <validation failure>**
+        - **Given** …
+        - **When** …
+        - **Then** …
+    validations:
+      required: true
+  - type: textarea
+    id: ui-requirements
+    attributes:
+      label: UI Requirements (when applicable)
+      description: "Data contract & behavior only — layout/visuals are the design system's. Forms: field table. Grids: column table + actions, pagination, empty/loading states. All copy AR+EN, RTL-safe."
+      value: |
+        **Form fields:**
+        | Field | Type | Mandatory | Validation | Source |
+        |---|---|---|---|---|
+        |  |  |  |  |  |
+
+        **Table/grid:**
+        | Column | Search | Sort | Filter |
+        |---|---|---|---|
+        |  |  |  |  |
+
+        Row actions: · Pagination: · Default sort: · Empty state: · Loading state:
+    validations:
+      required: false
+  - type: textarea
+    id: considerations
+    attributes:
+      label: Considerations
+      description: "RBAC, audit, security, notifications, a11y, PDPL, localization, dependencies. Name existing services/APIs to reuse. Performance criteria are numbers, not adjectives."
+    validations:
+      required: true
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of Scope
+      description: What this story deliberately does NOT do, and where deferred behavior lives (story ID or future milestone).
+    validations:
+      required: true
+  - type: textarea
+    id: subtasks
+    attributes:
+      label: Technical subtasks
+      description: "[QA/Sec] lane is MANDATORY when the story touches tenancy, auth, migrations, or storage rules."
+      value: |
+        **[FE]**
+        - [ ]
+
+        **[BE]**
+        - [ ]
+
+        **[QA/Sec]** (mandatory for tenancy/auth/migration/storage stories)
+        - [ ] Cross-tenant RLS isolation tests (`app/src/test/rls-isolation.test.ts`)
+        - [ ] Layla (code) + Faris (security) review before merge
+    validations:
+      required: true
+  - type: textarea
+    id: assumptions
+    attributes:
+      label: Assumptions
+      description: Every [ASSUMPTION]-tagged behavior from the scenarios, listed for founder review. Assumptions never ship silently as requirements.
+      placeholder: "- [ASSUMPTION] OTP lockout after 5 failures lasts 15 minutes — confirm."
+    validations:
+      required: false
