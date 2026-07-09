@@ -44,6 +44,15 @@ Creates the `team/*` + `priority/*` labels from `.github/labels.json`, milestone
 
 The template ships no `app/` — pick the FE/BE stack per project and scaffold it as `app/`. The shipped `ci.yml`, `package.json`, `pnpm-workspace.yaml`, and the language-specific sections of `code-style.md` are TS/React/pnpm DEFAULTS: keep them if the stack matches, otherwise replace the Quality + Dependency-audit steps and Semgrep rulesets for your languages. If CI job names change, update the required status checks in `.github/rulesets/protect-uat-and-main.json` before importing it.
 
+## 6a. Adopting into an EXISTING project (not a fresh repo)
+
+When told to "use the saas-starter template" in a project that already exists, do NOT rely on reading the template repo into conversation memory - COPY the files in, then verify they exist on disk:
+
+1. Copy `docs/story-format.md`, `docs/team.md`, `docs/dev-guidelines.md`, `docs/code-style.md` into the project (renumber to match local doc conventions if needed).
+2. Add a CLAUDE.md (or extend the project's session bootstrap doc) with the "Read before working" pointers - especially the story-format rule: flagship stories ship full Given/When/Then, Traces header, UI data contract, Out of Scope, subtask lanes; non-conforming stories are rejected in review.
+3. If the project is on GitHub: copy `.github/` (CI, PR template, issue forms) and run `scripts/github-setup.ps1`.
+4. VERIFY: list the project's docs and confirm the files landed. A session that only "read" the template will drift within one compaction.
+
 ## 6. First backlog
 
 Follow `docs/story-format.md`: epic map first, then flagship/compact stories via the issue forms (`.github/ISSUE_TEMPLATE/`). The delivery org and review agents are defined in `docs/team.md`.
