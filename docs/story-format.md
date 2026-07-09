@@ -140,4 +140,4 @@ Rules: FR trace required; ACs are observable outcomes with measurable targets; n
 7. Forms always get a structured field table; grids always get a column table (§3.4). Data contract only — layout is Reem's.
 8. Every flagship story gets Out of Scope and auto-generated [FE]/[BE] subtasks, plus [QA/Sec] when triggered.
 9. Keep the traceability header current — FR-x, Phase 3 tables/endpoints, priority, size.
-10. Route every flagship draft through the Reem + Rashid gate (SS3.8) and fold their input in before assignment.
+10. Route every flagship draft through the Reem + Rashid gate (section 3.8) and fold their input in before assignment.
