@@ -32,7 +32,7 @@ feat(checkins): photo privacy toggle defaults to coach-only
 fix(auth): correct OTP resend cooldown
 chore(ci): add semgrep ruleset for react
 docs(guidelines): initial dev guidelines
-refactor(theme): extract coach-accent derivation
+refactor(theme): extract accent-color derivation
 test(rls): cross-tenant isolation for checkins table
 ```
 
@@ -42,7 +42,7 @@ Scopes mirror epics/folders, defined per project (always: `ci`, `repo`; examples
 
 - Base branch: **`uat`** (only release PRs and hotfixes target `main`).
 - Title: `[E5-S2] Short meaningful description`.
-- Fill the PR template (auto-inserted). UI PRs MUST include before/after screenshots covering empty/loading/error states **and RTL**, plus both themes (light/dark) when affected.
+- Fill the PR template (auto-inserted). UI PRs MUST include before/after screenshots covering empty/loading/error states **and RTL**, plus every theme defined by the project's design system when affected.
 - Minimum approval: 1 review. Solo-founder mode: a `/code-review` pass (Claude) + self-review substitutes until a second human joins. Security-sensitive changes (`supabase/migrations`, RLS policies, auth, storage rules) additionally get a security-review pass — no exceptions.
 - Address review with follow-up commits; no force-push after review starts.
 - Merge strategy: **Squash & merge** only.
@@ -63,7 +63,7 @@ Planned additions as the codebase grows: RLS isolation test suite (blocking, per
 
 - PR squash-merged into `uat` with CI fully green (incl. security jobs)
 - Tests passing; coverage threshold met for domain logic (Phase 5 §4 policy)
-- UI: screenshots incl. RTL + both themes; states covered
+- UI: screenshots incl. RTL + all design-system themes; states covered
 - Migrations: committed, applied to dev project, **with RLS isolation tests**
 - Env/config changes documented in `.env.example` + README
 - Ticket moved to the correct state

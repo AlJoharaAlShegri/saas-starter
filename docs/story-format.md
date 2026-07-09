@@ -65,7 +65,7 @@ Each Then-step must be traceable to a confirmed requirement (phase docs, founder
 
 ### 3.4 UI Requirements (when applicable)
 
-If the story needs a page, form, modal, wizard, table, or dashboard, define its **data contract and behavior — not visual layout**. Layout, spacing, and visual styling belong to Reem's design system (`design/tokens.json`, Phase 3 §A3); duplicating them here creates drift.
+If the story needs a page, form, modal, wizard, table, or dashboard, define its **data contract and behavior — not visual layout**. Layout, spacing, and visual styling belong to Reem's design system (the project's design tokens); duplicating them here creates drift.
 
 **Forms** — one row per field:
 

@@ -8,7 +8,7 @@
 - [ ] Before / after included
 - [ ] States covered: empty / loading / error
 - [ ] **RTL (Arabic) screenshot included**
-- [ ] Both themes if affected (light / dark)
+- [ ] All themes of the project's design system covered, if affected
 
 ## Testing & Impact
 - [ ] Unit tests added/updated
