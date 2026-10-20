@@ -15,7 +15,7 @@ A story **escalates to flagship** if ANY of these apply:
 
 - Calls an external integration (SMS, payments, push, OG worker, any third-party API)
 - Has a status machine (≥3 states, or any approval/pending step)
-- Crosses a permission or tenancy boundary (new RLS policy, new role behavior)
+- Crosses a permission or tenancy boundary (new tenancy policy, new role behavior)
 - Ships a new migration or touches auth/storage rules
 - Moves money or handles PDPL-sensitive data
 - Novel UX with no existing pattern in the app
@@ -105,7 +105,7 @@ Every flagship story auto-generates subtasks in lanes:
 
 - **[FE]** — page/modal/form/table build, client-side validation, API integration, loading/error/empty states, success notifications, responsive + RTL, unit tests.
 - **[BE]** — database changes, API/RPC development, business logic, workflow implementation, external integrations, notification service wiring, audit logging, RBAC, background jobs, unit tests.
-- **[QA/Sec]** — **auto-generated whenever the story touches tenancy, auth, migrations, or storage rules**: cross-tenant RLS isolation tests and a Layla + Faris review before merge (standing rule, `docs/team.md`). This lane is not optional for those stories.
+- **[QA/Sec]** — **auto-generated whenever the story touches tenancy, auth, migrations, or storage rules**: cross-tenant isolation tests (RLS or platform equivalent) and a Layla + Faris review before merge (standing rule, `docs/team.md`). This lane is not optional for those stories.
 
 ### 3.8 Pre-assignment review gate (Reem + Rashid)
 

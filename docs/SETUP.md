@@ -20,7 +20,8 @@ Search the repo for `{{` and replace:
 | `{{PROJECT_SLUG}}` | package.json, docs/dev-guidelines.md | kebab-case repo/package name |
 | `{{GITHUB_OWNER}}` | docs/dev-guidelines.md | GitHub account/org |
 | `{{ONE_PARAGRAPH_PRODUCT_DESCRIPTION}}` | CLAUDE.md | What you're building |
-| `{{SUPABASE_PROJECT_REF}}` / `{{SUPABASE_REGION}}` | CLAUDE.md | From step 4 |
+| `{{BACKEND_PLATFORM}}` / `{{BACKEND_PROJECT_REF}}` / `{{BACKEND_REGION}}` | CLAUDE.md | Infra platform + project/account + region (step 4) |
+| `{{INFRA_SUMMARY}}` / `{{TENANCY_MECHANISM}}` | CLAUDE.md | Backend layout + tenant-isolation mechanism (step 4) |
 | `{{STACK_SUMMARY}}` / `{{COMMANDS}}` | CLAUDE.md | Stack + dev/build/test commands (step 5) |
 | `{{ENV_PREFIX}}` | .env.example | Client env prefix (VITE_, NEXT_PUBLIC_, ...) |
 
@@ -32,17 +33,17 @@ Search the repo for `{{` and replace:
 
 Creates the `team/*` + `priority/*` labels from `.github/labels.json`, milestones M1–M3, the `uat` branch, and imports the branch-protection ruleset from `.github/rulesets/protect-uat-and-main.json` (blocks direct pushes to `uat`/`main`, requires the four CI checks, squash-merge only). Add `epic/*` labels as epics are defined (docs/story-format.md).
 
-## 4. Supabase
+## 4. Backend & infrastructure (per project)
 
-1. Create a new project at supabase.com (pick region; Frankfurt for KSA-adjacent latency).
-2. Copy `.env.example` → `.env.local`; fill the Supabase URL and keys. Client-exposed vars carry your framework prefix ({{ENV_PREFIX}}: VITE_, NEXT_PUBLIC_, EXPO_PUBLIC_, ...).
-3. `SUPABASE_SERVICE_ROLE_KEY` stays server-side only (RLS test suite) — NEVER with a client-exposed prefix, never committed.
-4. Update the project ref + region in CLAUDE.md.
-5. Migration 0001 should ship the tenancy tables + RLS helper + the cross-tenant isolation test harness before any feature tables (hard rule).
+1. Choose the platform PER PROJECT (Supabase, AWS, GCP, Azure, ...) and create its project/account. The shipped `supabase/` folder and `.env.example` keys are the Supabase DEFAULT - replace them if you choose differently. (KSA-adjacent latency: prefer Middle East or Frankfurt regions.)
+2. Copy `.env.example` → `.env.local`; fill your platform URL and keys. Client-exposed vars carry your framework prefix ({{ENV_PREFIX}}: VITE_, NEXT_PUBLIC_, EXPO_PUBLIC_, ...).
+3. Server-side/admin credentials (e.g. `SUPABASE_SERVICE_ROLE_KEY`, cloud secret keys) stay server-side only (isolation test suite) — NEVER with a client-exposed prefix, never committed.
+4. Update the platform + project/account ref + region in CLAUDE.md.
+5. The FIRST schema change ships the tenancy model + its enforcement (RLS, IAM policies, or platform equivalent) + the cross-tenant isolation test harness, before any feature tables (hard rule, any platform).
 
 ## 5. App scaffold (per-project stack)
 
-The template ships no `app/` — pick the FE/BE stack per project and scaffold it as `app/`. The shipped `ci.yml`, `package.json`, `pnpm-workspace.yaml`, and the language-specific sections of `code-style.md` are TS/React/pnpm DEFAULTS: keep them if the stack matches, otherwise replace the Quality + Dependency-audit steps and Semgrep rulesets for your languages. If CI job names change, update the required status checks in `.github/rulesets/protect-uat-and-main.json` before importing it.
+The template ships no `app/` — pick the FE/BE stack per project and scaffold it as `app/`. The shipped `ci.yml`, `package.json`, `pnpm-workspace.yaml`, the `supabase/` folder, and the language-specific sections of `code-style.md` are TS/React/pnpm/Supabase DEFAULTS: keep them if the stack matches, otherwise replace the Quality + Dependency-audit steps and Semgrep rulesets for your languages. If CI job names change, update the required status checks in `.github/rulesets/protect-uat-and-main.json` before importing it.
 
 ## 6a. Adopting into an EXISTING project (not a fresh repo)
 

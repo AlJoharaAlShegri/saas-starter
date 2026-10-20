@@ -43,7 +43,7 @@ Scopes mirror epics/folders, defined per project (always: `ci`, `repo`; examples
 - Base branch: **`uat`** (only release PRs and hotfixes target `main`).
 - Title: `[E5-S2] Short meaningful description`.
 - Fill the PR template (auto-inserted). UI PRs MUST include before/after screenshots covering empty/loading/error states **and RTL**, plus every theme defined by the project's design system when affected.
-- Minimum approval: 1 review. Solo-founder mode: a `/code-review` pass (Claude) + self-review substitutes until a second human joins. Security-sensitive changes (`supabase/migrations`, RLS policies, auth, storage rules) additionally get a security-review pass — no exceptions.
+- Minimum approval: 1 review. Solo-founder mode: a `/code-review` pass (Claude) + self-review substitutes until a second human joins. Security-sensitive changes (schema migrations, tenancy policies, auth, storage rules) additionally get a security-review pass — no exceptions.
 - Address review with follow-up commits; no force-push after review starts.
 - Merge strategy: **Squash & merge** only.
 
@@ -57,14 +57,14 @@ Scopes mirror epics/folders, defined per project (always: `ci`, `repo`; examples
 | Dependency audit | per package manager (fail on high+) | yes |
 | Dependency updates | Dependabot (weekly, grouped minor/patch) | PRs |
 
-Planned additions as the codebase grows: RLS isolation test suite (blocking, per Phase 5 §4), RTL snapshot tests, Lighthouse CI on staging.
+Planned additions as the codebase grows: tenant-isolation test suite (blocking, per Phase 5 §4), RTL snapshot tests, Lighthouse CI on staging.
 
 ## 6. Definition of Done
 
 - PR squash-merged into `uat` with CI fully green (incl. security jobs)
 - Tests passing; coverage threshold met for domain logic (Phase 5 §4 policy)
 - UI: screenshots incl. RTL + all design-system themes; states covered
-- Migrations: committed, applied to dev project, **with RLS isolation tests**
+- Migrations: committed, applied to dev project, **with tenant-isolation tests**
 - Env/config changes documented in `.env.example` + README
 - Ticket moved to the correct state
 
@@ -89,6 +89,6 @@ All code follows [code-style.md](code-style.md) (Clean Code condensed, TS-adapte
 ## 9. Security ground rules (always on)
 
 - No secrets in the repo — `.env.local` only, `.env.example` documents keys.
-- All user input zod-validated at boundaries; RLS is the only trusted tenancy boundary.
+- All user input schema-validated at boundaries; server-side tenant isolation is the only trusted tenancy boundary.
 - No `console.log` in production code; no PII in logs.
 - New endpoints/tables ship with RBAC + audit logging per Phase 3 §B6.

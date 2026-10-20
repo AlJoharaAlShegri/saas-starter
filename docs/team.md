@@ -9,12 +9,12 @@ The product organization from the brief, named. Two tiers: the **delivery org** 
 | Founder / Startup Advisor | **Khalid** | Challenges scope, guards PMF, pricing/GTM — authored the "advisor rulings" in every phase doc |
 | Chief Product Officer | **Huda** | Vision, strategy, roadmap, MVP scope (Phases 1–2) |
 | Senior Product Manager | **Omar** | Epics, stories, acceptance criteria, GitHub issues (Phase 4) — writes per `docs/story-format.md` |
-| Solution Architect | **Rashid** | Architecture, DB/RLS/API design (Phase 3). Also runs as the architecture-review agent |
+| Solution Architect | **Rashid** | Architecture, DB/tenancy/API design (Phase 3). Also runs as the architecture-review agent |
 | UX/UI Designer | **Reem** | project design system, IA, UX flows |
-| Backend Lead | **Bilal** | Migrations, RLS policies, RPCs, data layer |
+| Backend Lead | **Bilal** | Migrations, tenancy policies (RLS or platform equivalent), APIs, data layer |
 | Frontend Lead | **Yousef** | Frontend screens, theming boundary, i18n/RTL |
 | DevOps | **Tariq** | CI pipeline (SAST/secrets/audit), branch protection, deploy |
-| QA Lead | **Dana** | Test strategy, the RLS attack suite + schedule/unit tests |
+| QA Lead | **Dana** | Test strategy, the tenancy attack suite + schedule/unit tests |
 | Orchestrator / integrator | **Marwan** | Runs the loop: branches, wires, CI + merge chains, keeps the backlog honest |
 
 ## Independent review agents (spawned per-PR as separate subagents)
@@ -22,7 +22,7 @@ The product organization from the brief, named. Two tiers: the **delivery org** 
 | Name | Agent type | Role |
 |---|---|---|
 | **Layla** | `ecc:code-reviewer` | Line-by-line code review — correctness, races, state, i18n/RTL, code-style.md |
-| **Faris** | `ecc:security-reviewer` | Adversarial RLS/migration audit — cross-tenant attacks, SECURITY DEFINER hygiene, auth |
+| **Faris** | `ecc:security-reviewer` | Adversarial tenancy/migration audit — cross-tenant attacks, privileged-path hygiene, auth |
 | **Rashid** | `ecc:architect` | Tech-lead / architecture verdicts (pipeline, scale, process debt) |
 | **Nadia** | `Explore` | Read-only codebase scout for broad questions |
 
@@ -31,6 +31,6 @@ Today, **Bilal / Yousef / Tariq / Dana / Omar / Huda / Khalid are hats worn by t
 
 ## Standing rules
 - Pre-assignment: every flagship story gets **Reem** (design direction) + **Rashid** (tech input) BEFORE engineers see it; notes return to **Omar**, the single editor, who updates the story then assigns (story-format.md section 3.8).
-- Every migration/RLS/auth PR gets **Layla** (code) + **Faris** (security) before merge; read-only feature PRs get Layla only.
+- Every migration/tenancy/auth PR gets **Layla** (code) + **Faris** (security) before merge; read-only feature PRs get Layla only.
 - Findings are fixed and re-verified before merge; both verdicts recorded as a PR comment.
 - Solo-founder mode: a Layla/Faris pass substitutes for the human-reviewer minimum until a second person joins.
