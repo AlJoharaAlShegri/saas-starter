@@ -112,7 +112,7 @@ Every flagship story auto-generates subtasks in lanes:
 No flagship story is assigned to engineers as-drafted. After Omar drafts it:
 
 1. **Reem - design direction** (any story with a UI surface): design-system components to reuse or extend, UX flow and states guidance, motion + RTL notes, Figma references. Recorded in the story as a **Design Direction** section.
-2. **Rashid - tech input**: architecture fit, which existing services/APIs/tables to extend (reuse before build), data-model and integration notes, feasibility risks, anything needing an ADR. Recorded as a **Tech Notes** section.
+2. **Rashid - tech input**: architecture fit, which existing services/APIs/tables to extend (reuse before build), data-model and integration notes, feasibility risks, anything needing an ADR (`docs/adr/`). Recorded as a **Tech Notes** section.
 3. Their input goes back to **Omar**, who updates the story and subtasks - Omar stays the single editor so format and voice stay consistent.
 4. Only after both sections are recorded is the story assigned.
 

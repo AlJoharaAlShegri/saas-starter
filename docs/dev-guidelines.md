@@ -92,3 +92,30 @@ All code follows [code-style.md](code-style.md) (Clean Code condensed, TS-adapte
 - All user input schema-validated at boundaries; server-side tenant isolation is the only trusted tenancy boundary.
 - No `console.log` in production code; no PII in logs.
 - New endpoints/tables ship with RBAC + audit logging per Phase 3 §B6.
+
+## Rule precedence
+
+When guidance conflicts, apply in this order - no agent may silently override a higher source:
+
+1. Law, regulation, and mandatory policy
+2. An explicit human (founder) decision
+3. An approved ADR (`docs/adr/`)
+4. CLAUDE.md and repository instructions
+5. These guidelines and `docs/code-style.md`
+6. The established local code pattern
+7. Agent preference
+
+Name the conflict when you hit one; never pick a side silently.
+
+## Scope & evidence discipline
+
+Scope:
+- Implement only the approved scope. No unrelated file changes, no redesigns of unrelated modules, no unrequested features.
+- Cleanup/refactoring never rides along with feature work unless required for correctness - it gets its own PR.
+- Record every material deviation from the agreed plan in the PR; stop and escalate when a required change exceeds approved scope.
+
+Evidence:
+- Never claim a command, test, or check passed unless it was actually executed; report unexecuted checks as unexecuted, with the reason.
+- Never delete or weaken a failing test to go green - fix the implementation, or escalate if the test itself is wrong.
+- Skipped checks are never marked passed; snapshot/golden-file changes are inspected, not auto-accepted.
+- Performance claims require measured numbers.

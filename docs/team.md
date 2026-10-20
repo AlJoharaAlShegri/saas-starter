@@ -34,3 +34,14 @@ Today, **Bilal / Yousef / Tariq / Dana / Omar / Huda / Khalid are hats worn by t
 - Every migration/tenancy/auth PR gets **Layla** (code) + **Faris** (security) before merge; read-only feature PRs get Layla only.
 - Findings are fixed and re-verified before merge; both verdicts recorded as a PR comment.
 - Solo-founder mode: a Layla/Faris pass substitutes for the human-reviewer minimum until a second person joins.
+
+## Authority rules
+
+- No agent approves its own work: implementer and final reviewer are always different agents.
+- Reviewers may not weaken expected behavior, delete failing tests, or silently downgrade findings to pass a gate.
+- Verdicts separate blocking findings from suggestions; personal style preference is never blocking (code-style.md is - cite it by section).
+- Any agent may propose an exception to any rule; none may approve its own. Exceptions are explicit, time-bound, and owned (by the founder until a second human joins).
+
+## Learning rule
+
+Validated lessons become EXECUTABLE memory wherever possible - a regression test, a lint/Semgrep rule, a schema constraint, a CI gate - not prose. Proposals land in `docs/learning/` with evidence, and are reviewed before anything is promoted into these docs or CLAUDE.md. Nothing in the inbox is binding.

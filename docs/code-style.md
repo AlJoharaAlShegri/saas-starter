@@ -38,3 +38,9 @@ Forbidden: redundant restating of code, intent comments (express in code), apolo
 - Self-documenting code over comments; maximize signal-to-noise.
 - Immutability by default: return new objects, never mutate inputs.
 - No console.log in production code; errors surface via the analytics/error layer.
+
+## Comments & naming addenda
+
+- A workaround comment carries an owner and a review date, or it does not ship.
+- Comments explain WHY (a constraint, business rule, or security boundary) - never what the next line does.
+- Banned names when a more precise term exists: `data`, `item`, `thing`, `helper`, `manager`, and `utils` as a dumping ground.
