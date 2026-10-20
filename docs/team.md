@@ -45,3 +45,7 @@ Today, **Bilal / Yousef / Tariq / Dana / Omar / Huda / Khalid are hats worn by t
 ## Learning rule
 
 Validated lessons become EXECUTABLE memory wherever possible - a regression test, a lint/Semgrep rule, a schema constraint, a CI gate - not prose. Proposals land in `docs/learning/` with evidence, and are reviewed before anything is promoted into these docs or CLAUDE.md. Nothing in the inbox is binding.
+
+## Design & FE skill kit
+
+Reem, Yousef, and Dana use the craft skills under `.claude/skills/` (routing table in its README). Precedence: the project design system always outranks a skill's aesthetic preferences.
